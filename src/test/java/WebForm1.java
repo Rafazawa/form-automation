@@ -1,10 +1,8 @@
 // Page URL: https://docs.google.com/forms/d/e/1FAIpQLSeI8_vYyaJgM7SJM4Y9AWfLq-tglWZh6yt7bEXEOJr_L-hV1A/viewform?formkey=dGx0b1ZrTnoyZDgtYXItMWVBdVlQQWc6MQ
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 @SuppressWarnings("FieldCanBeLocal")
@@ -15,53 +13,53 @@ public class WebForm1 extends PageObject {
         super(driver);
     }
 
-    private final String ShortAnswer = "Yes";
-    private final String LongAnswer = "I know what you did last summer...";
-    private final String AnotherAnswer = "And another summer also...";
+    private final String shortAnswer = "Yes";
+    private final String longAnswer = "I know what you did last summer...";
+    private final String anotherAnswer = "And another summer also...";
 
     @FindBy(xpath = "//input[@class='whsOnd zHQkBf']")
-    private WebElement short_answer;
+    private WebElement findShortAnswer;
 
     @FindBy(xpath = "//textarea[@aria-label='Twoja odpowiedź']")
-    private WebElement long_answer;
+    private WebElement findLongAnswer;
 
     @FindBy(css = "div[class='RWzxl yqQS1 SjlgO'] input[aria-label='Inna odpowiedź']")
-    private WebElement fill_another;
+    private WebElement findAnotherAnswer;
 
     @FindBy(xpath = "//div[@id='i27']//div[@class='uHMk6b fsHoPb']")
-    private WebElement check_choice1;
+    private WebElement findChoice1;
     @FindBy(xpath = "//div[@id='i30']//div[@class='uHMk6b fsHoPb']")
-    private WebElement check_choice2;
+    private WebElement findChoice2;
 
-    @FindBy(css = "div[class='uArJ5e UQuaGc Y5sE8d VkkpIf NqnGTe'] span[class='l4V7wb Fxmcue']")
-    private WebElement send_button;
+    @FindBy(xpath = "//div[@class='uArJ5e UQuaGc Y5sE8d VkkpIf QvWxOd']//span[@class='l4V7wb Fxmcue']")
+    private WebElement findSendButton;
 
     @FindBy(css = ".vHW8K")
-    private WebElement check_sending;
+    private WebElement findSending;
 
     public void enterShortAnswer(){
-        this.short_answer.sendKeys(ShortAnswer);
+        this.findShortAnswer.sendKeys(shortAnswer);
     }
 
     public void enterLongAnswer(){
-        this.long_answer.sendKeys(LongAnswer);
+        this.findLongAnswer.sendKeys(longAnswer);
     }
 
     public void fillAnotherChoice(){
-        this.fill_another.sendKeys(AnotherAnswer);
+        this.findAnotherAnswer.sendKeys(anotherAnswer);
     }
 
     public void checkChoices(){
-        this.check_choice1.click();
-        this.check_choice2.click();
+        this.findChoice1.click();
+        this.findChoice2.click();
     }
 
     public void pressSendButton(){
-        this.send_button.click();
+        this.findSendButton.click();
     }
 
     public void checkSending() {
-        String actual = this.check_sending.getText().trim();
+        String actual = this.findSending.getText().trim();
         String expected = "Your confirmation will show up on the screen after form is submitted";
         Assert.assertEquals(actual, expected);
 //        System.out.println(actual);   //  Only to check what getText returns for string actual

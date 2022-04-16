@@ -16,53 +16,53 @@ public class WebForm extends PageObject {
         super(driver);
     }
 
-    private final String FirstName = "John";
-    private final String LastName = "Howard";
-    private final String JobTitle = "Carpenter";
-    private final String DateForm = "01/16/1948";
+    private final String firstName = "John";
+    private final String lastName = "Howard";
+    private final String jobTitle = "Carpenter";
+    private final String dateForm = "01/16/1948";
 
     @FindBy(id = "first-name")
-    private WebElement first_name;
+    private WebElement findFirstName;
 
     @FindBy(id = "last-name")
-    private WebElement last_name;
+    private WebElement findLastName;
 
     @FindBy(id = "job-title")
-    private WebElement job_title;
+    private WebElement findJobTitle;
 
     @FindBy(id = "radio-button-3")
-    private WebElement education_level;
+    private WebElement findEducationLevel;
 
     @FindBy(id = "checkbox-3")
-    private WebElement sex_checkbox;
+    private WebElement findSexCheckbox;
 
     @FindBy(id = "datepicker")
-    private WebElement date_form;
+    private WebElement findDateForm;
 
     @FindBy(xpath = "//a[contains(text(),'Submit')]")
-    private WebElement submit_button;
+    private WebElement findSubmitButton;
 
     @FindBy(className = "alert-success")
-    private WebElement check_submission;
+    private WebElement findSubmission;
 
     public void enterFirstName(){
-        this.first_name.sendKeys(FirstName);
+        this.findFirstName.sendKeys(firstName);
     }
 
     public void enterLastName(){
-        this.last_name.sendKeys(LastName);
+        this.findLastName.sendKeys(lastName);
     }
 
     public void enterJobTitle(){
-        this.job_title.sendKeys(JobTitle);
+        this.findJobTitle.sendKeys(jobTitle);
     }
 
     public void markEducationLevel(){
-        this.education_level.click();
+        this.findEducationLevel.click();
     }
 
     public void checkSex(){
-        this.sex_checkbox.click();
+        this.findSexCheckbox.click();
     }
 
     public void dropExperience(){
@@ -71,17 +71,17 @@ public class WebForm extends PageObject {
     }
 
     public void enterDate(){
-        this.date_form.sendKeys(DateForm);
+        this.findDateForm.sendKeys(dateForm);
         Actions action = new Actions(driver);
         action.moveByOffset(0, 0).click().build().perform();
     }
 
     public void pressSubmitButton(){
-        this.submit_button.click();
+        this.findSubmitButton.click();
     }
 
     public void checkSubmission() {
-        String actual = this.check_submission.getText().trim();
+        String actual = this.findSubmission.getText().trim();
         String expected = "The form was successfully submitted!";
         Assert.assertEquals(actual, expected, "The form has errors");
     }
